@@ -1,0 +1,23 @@
+CL-USER> (count-cells nil)
+(count-cells nil)
+0
+
+CL-USER> (count-cells 1)
+(count-cells 1)
+0
+
+CL-USER> (count-cells '())
+(count-cells '())
+0
+
+CL-USER> (count-cells '(a b))
+(count-cells '(a b))
+2
+
+CL-USER> (count-cells '(a b (c)))
+(count-cells '(a b (c)))
+4
+
+CL-USER> (count-cells '((a (b) c (d (e f (g))))))
+(count-cells '((a (b) c (d (e f (g))))))
+12

@@ -1,0 +1,27 @@
+CL-USER> (typer 'a)
+(typer 'a)
+SYMBOL
+
+CL-USER> (typer 1)
+(typer 1)
+NUMBER
+
+CL-USER> typer nil
+nil
+NIL
+
+CL-USER> (typer '(a b))
+(typer '(a b))
+(SYMBOL SYMBOL)
+
+CL-USER> (typer '(1 a))
+(typer '(1 a))
+(NUMBER SYMBOL)
+
+CL-USER> (typer '(a ()))
+(typer '(a ()))
+(SYMBOL NIL)
+
+CL-USER> (typer '(a (1 (b (2)))))
+(typer '(a (1 (b (2)))))
+(SYMBOL (NUMBER (SYMBOL (NUMBER))))

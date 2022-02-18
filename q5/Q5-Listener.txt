@@ -1,0 +1,84 @@
+CL-USER> (match-atoms nil nil)
+(match-atoms nil nil)
+T
+
+CL-USER> (match-atoms nil nil)
+(match-atoms nil nil)
+T
+
+CL-USER> (match-atoms nil 'a)
+(match-atoms nil 'a)
+NIL
+
+CL-USER> (match-atoms nil '*var*)
+(match-atoms nil '*var*)
+T
+
+CL-USER> (match-atoms '*var* 'a)
+(match-atoms '*var* 'a)
+T
+
+CL-USER> (matchp '(a b c) '(a b c))
+(matchp '(a b c) '(a b c))
+T
+
+CL-USER> (matchp '(a b c) '(a b))
+(matchp '(a b c) '(a b))
+NIL
+
+CL-USER> (matchp nil '(a))
+(matchp nil '(a))
+NIL
+
+CL-USER> (matchp '(a b c) '(*var*))
+(matchp '(a b c) '(*var*))
+NIL
+
+CL-USER> (matchp '(a b c) '(*var* *var* *var*))
+(matchp '(a b c) '(*var* *var* *var*))
+T
+
+CL-USER> (matchp '(a (b c)) '(a (b c)))
+(matchp '(a (b c)) '(a (b c)))
+T
+
+CL-USER> (setf *truths* '((own jack fido) 
+(love jack anne)   
+(love anne *var*)   
+(own anne spot)
+(love spot fido)))  
+(setf *truths* '((own jack fido) 
+(love jack anne)   
+(love anne *var*)   
+(own anne spot)
+(love spot fido)))
+((OWN JACK FIDO) (LOVE JACK ANNE) (LOVE ANNE *VAR*) (OWN ANNE SPOT) (LOVE SPOT FIDO))
+
+
+CL-USER> (query nil *truths*)
+(query nil *truths*)
+NIL
+
+CL-USER> (query '(love anne jack) *truths*)
+(query '(love anne jack) *truths*)
+(LOVE ANNE *VAR*)
+
+CL-USER> (query '(love jack popcorn) *truths*)
+(query '(love jack popcorn) *truths*)
+NIL
+
+CL-USER> (query '(own anne spot) *truths*)
+(query '(own anne spot) *truths*)
+(OWN ANNE SPOT)
+
+CL-USER> (query '(love jack) *truths*)
+(query '(love jack) *truths*)
+NIL
+
+CL-USER> (query '(love jack jack) *truths*)
+(query '(love jack) *truths*)
+NIL
+
+CL-USER> (query nil nil)
+(query nil nil)
+NIL

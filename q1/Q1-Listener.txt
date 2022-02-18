@@ -1,0 +1,107 @@
+CL-USER> 
+(setp '( a b c))
+T
+
+CL-USER> 
+(setp nil)
+NIL
+
+CL-USER> (setp '(a b a c a))
+(setp '(a b a c a))
+NIL
+
+CL-USER> (setp 1)
+(setp 1)
+NIL
+
+CL-USER> (insert 'a '(b c d))
+(insert 'a '(b c d))
+(A B C D)
+
+CL-USER> (insert nil '(b c d))
+(insert nil '(b c d))
+(B C D)
+
+CL-USER> (insert nil nil)
+(insert nil nil)
+NIL
+
+;(writeup didn't specify behaviour, I make a set)
+CL-USER> (insert 'a 'b)
+(insert 'a 'b)
+(A B)
+
+CL-USER> (insert 'a '(a b c d))
+(insert 'a '(a b c d))
+(A B C D)
+
+CL-USER> (insert 'a nil)
+(insert 'a nil)
+(A)
+
+CL-USER> (makeset '(a b c))
+(makeset '(a b c))
+(A B C)
+
+CL-USER> (makeset '(a b a c))
+(makeset '(a b a c))
+(B A C)
+
+CL-USER> (makeset nil)
+(makeset nil)
+NIL
+
+;unspec'd behaviour in writeup, I choose to convert atom -> single element set
+CL-USER> (makeset 'a)
+(makeset 'a)
+(A)
+
+CL-USER> (rel-complement '(a) '(a b))
+(rel-complement '(a) '(a b))
+NIL
+
+CL-USER> (rel-complement '(b c) '(a))
+(rel-complement '(b c) '(a))
+(B C)
+
+CL-USER> (rel-complement nil nil)
+(rel-complement nil nil)
+NIL
+
+CL-USER> (rel-complement '(a) nil)
+(rel-complement '(a) nil)
+(A)
+
+CL-USER> (rel-complement nil '(a))
+(rel-complement nil '(a))
+NIL
+
+CL-USER> (rel-complement '(a b) '(a b))
+(rel-complement '(a b) '(a b))
+NIL
+
+CL-USER> (rel-complement '(a b c) '(b c))
+(rel-complement '(a b c) '(b c))
+(A)
+
+;note this relies on rel-complement, which works on atoms by converting them to lists
+CL-USER> (set-equal nil nil)
+(set-equal nil nil)
+T
+
+CL-USER> (set-equal '(a) nil)
+(set-equal '(a) nil)
+NIL
+
+CL-USER> (set-equal '(a) '(a))
+(set-equal '(a) '(a))
+T
+
+CL-USER> (set-equal '(a) '(b))
+(set-equal '(a) '(b))
+NIL
+
+CL-USER> (set-equal '(a b) '(b a))
+(set-equal '(a b) '(b a))
+T
+

@@ -1,0 +1,51 @@
+CL-USER> (setf (get 'baking-soda 'isa) '(RISE DEO ANTA))
+(setf (get 'baking-soda 'isa) '(RISE DEO ANTA))
+(RISE DEO ANTA)
+
+CL-USER> (setf (get 'RISE 'nice) 'rMET)
+(setf (get 'RISE 'nice) 'rMET)
+RMET
+
+CL-USER> (setf (get 'DEO 'nice) 'dMET)
+(setf (get 'DEO 'nice) 'dMET)
+DMET
+
+CL-USER> (setf (get 'ANTA 'nice) 'antMET)
+(setf (get 'ANTA 'nice) 'antMET)
+ANTMET
+
+CL-USER> (multiple-inherit-get nil nil)
+(multiple-inherit-get nil nil)
+NIL
+
+CL-USER> (multiple-inherit-get 'baking-soda 'nice)
+(multiple-inherit-get 'baking-soda 'nice)
+RMET
+
+CL-USER> (setf (get 'ANTA 'toxic) 'dontEatME!)
+(setf (get 'ANTA 'toxic) 'dontEatME!)
+DONTEATME!
+
+CL-USER> (multiple-inherit-get 'baking-soda 'toxic)
+(multiple-inherit-get 'baking-soda 'toxic)
+DONTEATME!
+
+CL-USER> (multiple-inherit-get 'baking-soda 'not-real)
+(multiple-inherit-get 'baking-soda 'not-real)
+NIL
+
+CL-USER> (setf (get 'ANTA 'isa) 'SUPRA-ANTA)
+(setf (get 'ANTA 'isa) 'SUPRA-ANTA)
+SUPRA-ANTA
+
+CL-USER> (setf (get 'SUPRA-ANTA 'isSuper) 'thatsRight!)
+(setf (get 'SUPRA-ANTA 'isSuper) 'thatsRight!)
+THATSRIGHT!
+
+CL-USER> (multiple-inherit-get 'baking-soad 'isSuper)
+(multiple-inherit-get 'baking-soda 'isSuper)
+NIL
+
+CL-USER> 
+(multiple-inherit-get 'baking-soda 'isSuper)
+THATSRIGHT!

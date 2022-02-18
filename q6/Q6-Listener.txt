@@ -1,0 +1,39 @@
+(setf (get 'A 'isa) '(letter))
+(setf (get 'B 'isa) 'letter)
+(setf (get 'A 'vowel) 'is-is!)
+(setf (get 'B 'vowel) 'it-is-not)
+(setf (get 'letter 'alphabet) 'latin)
+(setf (get 'letter 'isa) 'symbol)
+(setf (get 'symbol 'used-for-writing) 'that-is-true!)
+
+CL-USER> (inherit-get 'A 'isa)
+(inherit-get 'A 'isa)
+(LETTER)
+
+CL-USER> (inherit-get 'B 'isa)
+(inherit-get 'B 'isa)
+LETTER
+
+CL-USER> (inherit-get 'A 'vowel)
+(inherit-get 'A 'vowel)
+IS-IS!
+
+CL-USER> (inherit-get 'B 'vowel)
+(inherit-get 'B 'vowel)
+IT-IS-NOT
+
+CL-USER> (inherit-get 'B 'not-a-real-prop)
+(inherit-get 'B 'not-a-real-prop)
+NIL
+
+CL-USER> (inherit-get 'A 'alphabet)
+(inherit-get 'A 'alphabet)
+LATIN
+
+CL-USER> (inherit-get 'B 'used-for-writing)
+(inherit-get 'B 'used-for-writing)
+THAT-IS-TRUE!
+
+CL-USER> (inherit-get 'B 'used-for-cooking)
+(inherit-get 'B 'used-for-cooking)
+NIL
